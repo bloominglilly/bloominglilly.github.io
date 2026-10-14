@@ -118,3 +118,60 @@
 
         /* 카드가 순서대로 나타나도록 딜레이 시간 적용 */
         .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.8s; }
+
+        /* 애니메이션 정의 */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Kang JiHee</h1>
+            <p>BRAND MARKETER</p>
+        </div>
+    </div>
+
+    <div class="work-section">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        
+        <div class="card-grid">
+            <!-- 1. 서울시니어스타워 (각 카드의 href에 연결될 페이지 이름을 지정해두었습니다) -->
+            <a href="seoul-senior.html" class="card">
+                <h3>서울시니어스타워</h3>
+                <p>웰파크호텔<br>석정온천휴스파</p>
+            </a>
+
+            <!-- 2. 유맥에프앤알 -->
+            <a href="yumac.html" class="card">
+                <h3>유맥에프앤알</h3>
+                <p>다담몰, 다담식자재마트<br>메가박스, 유맥</p>
+            </a>
+
+            <!-- 3. 센터원플래닛 -->
+            <a href="centerone.html" class="card">
+                <h3>센터원플래닛</h3>
+                <p>청연 메디컬그룹</p>
+            </a>
+
+            <!-- 4. 바로만든 -->
+            <a href="baromake.html" class="card">
+                <h3>바로만든</h3>
+                <p>타르타르<br>라라브레드</p>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
