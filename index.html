@@ -15,9 +15,9 @@
             color: #ffffff;
         }
 
-        /* 1. 첫 화면 (Hero Section) - 카드가 바로 보이도록 높이를 살짝 조정했습니다 */
+        /* 1. 첫 화면 (스크롤 유도를 위해 다시 화면에 꽉 차도록 100vh로 설정) */
         .hero-section {
-            height: 60vh; 
+            height: 100vh; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -47,7 +47,7 @@
 
         /* 2. 회사별 카드형 갤러리 섹션 */
         .work-section {
-            padding: 40px 20px 100px;
+            padding: 100px 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -61,117 +61,20 @@
             font-weight: 500;
         }
 
-        /* 그리드(바둑판) 레이아웃 설정 */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개씩 큼직하게 배치 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
-        /* 반응형: 모바일 화면에서는 1줄로 변경 */
         @media (max-width: 768px) {
             .card-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* 3. 카드 개별 디자인 및 효과 */
+        /* 3. 카드 개별 디자인 */
         .card {
             background: #1e1e1e;
             border: 1px solid #333;
             border-radius: 16px;
-            padding: 50px 40px;
-            text-decoration: none; /* 링크 밑줄 제거 */
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 150px;
-            transition: all 0.4s ease; /* 부드러운 호버 효과 */
-            
-            /* 처음에 투명하게 숨겨둠 (툭툭 뜨는 효과를 위해) */
-            opacity: 0;
-            transform: translateY(40px);
-            animation: popUp 0.8s forwards ease-out;
-        }
-
-        /* 마우스를 올렸을 때(Hover) 효과 */
-        .card:hover {
-            transform: translateY(-10px) !important; /* 위로 살짝 떠오름 */
-            border-color: #fff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            background: #252525;
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            margin: 0 0 15px 0;
-            font-weight: 700;
-        }
-
-        .card p {
-            font-size: 1.1rem;
-            color: #aaa;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* 카드가 순서대로 나타나도록 딜레이 시간 적용 */
-        .card:nth-child(1) { animation-delay: 0.2s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.6s; }
-        .card:nth-child(4) { animation-delay: 0.8s; }
-
-        /* 애니메이션 정의 */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes popUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="hero-section">
-        <div class="hero-text">
-            <h1>Kang JiHee</h1>
-            <p>BRAND MARKETER</p>
-        </div>
-    </div>
-
-    <div class="work-section">
-        <h2 class="section-title">WORK EXPERIENCE</h2>
-        
-        <div class="card-grid">
-            <!-- 1. 서울시니어스타워 (각 카드의 href에 연결될 페이지 이름을 지정해두었습니다) -->
-            <a href="seoul-senior.html" class="card">
-                <h3>서울시니어스타워</h3>
-                <p>웰파크호텔<br>석정온천휴스파</p>
-            </a>
-
-            <!-- 2. 유맥에프앤알 -->
-            <a href="yumac.html" class="card">
-                <h3>유맥에프앤알</h3>
-                <p>다담몰, 다담식자재마트<br>메가박스, 유맥</p>
-            </a>
-
-            <!-- 3. 센터원플래닛 -->
-            <a href="centerone.html" class="card">
-                <h3>센터원플래닛</h3>
-                <p>청연 메디컬그룹</p>
-            </a>
-
-            <!-- 4. 바로만든 -->
-            <a href="baromake.html" class="card">
-                <h3>바로만든</h3>
-                <p>타르타르<br>라라브레드</p>
-            </a>
-        </div>
-    </div>
-
-</body>
-</html>
