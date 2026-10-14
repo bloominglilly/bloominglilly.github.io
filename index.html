@@ -10,14 +10,19 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
             font-family: 'Pretendard', sans-serif;
-            background-color: #111; /* 세련된 다크 그레이 배경 */
+            background-color: #111; 
             color: #ffffff;
+        }
+
+        /* 1. 메인 첫 화면 (Hero Section) */
+        .hero-section {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(180deg, #111 0%, #222 100%);
         }
 
         .hero-text {
@@ -35,21 +40,161 @@
         p {
             font-size: 1.2rem;
             font-weight: 300;
-            color: #888888;
+            color: #888;
             letter-spacing: 6px;
             margin-top: 0;
         }
 
+        /* 2. 회사별 탭 메뉴 (Work Experience) */
+        .work-section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: #888;
+            border: 1px solid #555;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: #fff;
+            color: #111;
+            border-color: #fff;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 16px;
+            animation: slideUp 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .tab-content ul {
+            line-height: 1.8;
+            color: #ccc;
+            padding-left: 20px;
+        }
+
+        .tab-content li {
+            margin-bottom: 10px;
+        }
+
+        /* 애니메이션 효과 */
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(15px); }
             100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="hero-text">
-        <h1>Kang JiHee</h1>
-        <p>BRAND MARKETER</p>
+
+    <!-- 첫 화면 -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Kang JiHee</h1>
+            <p>BRAND MARKETER</p>
+        </div>
     </div>
+
+    <!-- 워크 익스피리언스 탭 -->
+    <div class="work-section">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab('wellpark', this)">웰파크호텔 & 휴스파</button>
+            <button class="tab-btn" onclick="openTab('dadam', this)">다담 (Dadam)</button>
+            <button class="tab-btn" onclick="openTab('creator', this)">Content Creator</button>
+        </div>
+
+        <!-- 웰파크호텔 탭 내용 -->
+        <div id="wellpark" class="tab-content active">
+            <h3>호텔/리조트 마케팅 및 프로모션 기획</h3>
+            <ul>
+                <li>웰파크호텔 1주년 기념 프로모션 카피 기획 및 영상 콘셉트 도출</li>
+                <li>구글 애즈(Google Ads) 캠페인 성과 관리 및 최적화</li>
+                <li>휴스파 야외풀 개장 및 류엘의 매직콘서트 등 시즌 홍보 마케팅</li>
+            </ul>
+        </div>
+
+        <!-- 다담 탭 내용 -->
+        <div id="dadam" class="tab-content">
+            <h3>B2C 마케팅 및 퍼포먼스 자동화</h3>
+            <ul>
+                <li>GA4 및 GTM(Google Tag Manager)을 활용한 이벤트 트래킹 및 데이터 분석</li>
+                <li>Make.com 기반 인스타그램 성과 자동화 시스템 구축</li>
+                <li>공식 SNS 채널 및 메시지, 검색광고 기획 운영</li>
+            </ul>
+        </div>
+
+        <!-- 크리에이터 탭 내용 -->
+        <div id="creator" class="tab-content">
+            <h3>네이버 클립 크리에이터 & 블로거</h3>
+            <ul>
+                <li>네이버 블로그(blooming_365) 및 푸드 인스타그램 채널 운영</li>
+                <li>트렌디한 숏폼(Short-form) 영상 기획 및 자체 제작</li>
+                <li>다양한 브랜드 협업 및 어필리에이트 수익 창출 모델 기획</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- 탭을 작동시키는 자바스크립트 -->
+    <script>
+        function openTab(tabId, element) {
+            // 모든 탭 내용 숨기기
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // 모든 버튼 비활성화 색상으로 변경
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 클릭한 탭의 내용과 버튼만 활성화
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+        }
+    </script>
 </body>
 </html>
