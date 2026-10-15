@@ -16,9 +16,15 @@
         .back-btn:hover { opacity: 1; }
 
         /* 배경 이미지 */
-        .header-bg {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(17,17,17,1)), url('다담 일곡점 외관.jpg') center/cover no-repeat;
+.header-bg {
+            /* 1. 높이 줄이기: 기존 60vh -> 40vh 로 변경 */
+            /* 세로 높이를 줄이면 사진이 세로 공간을 채우기 위해 무리하게 확대되는 것을 막아줍니다. */
+            height: 40vh; 
+            
+            /* 2. 배경 위치 조정: center/cover -> center 40%/cover 로 변경 */
+            /* 사진의 어느 부분을 중심으로 보여줄지 결정합니다. 40%는 위에서부터 40% 지점을 중심에 두어 건물이 예쁘게 보이게 합니다. */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(17,17,17,1)), url('다담 일곡점 외관.jpg') center 40%/cover no-repeat;
+            
             display: flex; align-items: flex-end; padding-bottom: 50px;
         }
 
