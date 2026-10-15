@@ -69,4 +69,111 @@
         /* 프로젝트 하이라이트 유지 */
         .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .project-card { background: #1e1e1e; border: 1px solid #333; border-radius: 16px; overflow: hidden; text-decoration: none; color: #fff; display: flex; flex-direction: column; transition: all 0.4s ease; opacity: 0; transform: translateY(40px); }
-        .project-card:hover { transform: translateY(-10px) !important
+        .project-card:hover { transform: translateY(-10px) !important; border-color: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .project-img { width: 100%; height: 220px; background-color: #2a2a2a; background-size: cover; background-position: center; border-bottom: 1px solid #333; }
+        .project-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-tag { align-self: flex-start; background: rgba(255, 255, 255, 0.1); color: #ddd; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; }
+        .project-company { font-size: 0.85rem; color: #888; margin-bottom: 8px; }
+        .project-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 15px 0; line-height: 1.4; }
+        .project-desc { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin: 0; }
+
+        @media (max-width: 768px) { .card-grid, .project-grid { grid-template-columns: 1fr; } }
+        
+        .show { animation: popUp 0.8s forwards ease-out; }
+        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes popUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Kang JiHee</h1>
+            <p>BRAND MARKETER</p>
+        </div>
+    </div>
+
+    <!-- WORK EXPERIENCE 섹션 (미니멀 타이포 & 화살표 디자인) -->
+    <div class="section-container">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        <div class="card-grid">
+            
+            <a href="seoul-senior.html" class="card">
+                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
+                <h3>서울시니어스타워</h3>
+                <p>웰파크호텔, 석정온천휴스파</p>
+            </a>
+
+            <a href="yumac.html" class="card">
+                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
+                <h3>유맥에프앤알</h3>
+                <p>다담몰, 다담식자재마트, 메가박스, 유맥</p>
+            </a>
+
+            <a href="centerone.html" class="card">
+                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
+                <h3>센터원플래닛</h3>
+                <p>청연 메디컬그룹</p>
+            </a>
+
+            <a href="baromake.html" class="card">
+                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
+                <h3>바로만든</h3>
+                <p>타르타르, 라라브레드</p>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- PROJECT HIGHLIGHTS 섹션 -->
+    <div class="section-container" style="padding-top: 20px;">
+        <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
+        <div class="project-grid">
+            
+            <a href="project-wellpark.html" class="project-card">
+                <div class="project-img" style="background-image: url('DJI_0352 복사.jpg');"></div>
+                <div class="project-info">
+                    <span class="project-tag">PROMOTION</span>
+                    <span class="project-company">서울시니어스타워</span>
+                    <h3 class="project-title">웰파크호텔 1주년 및 시즌 프로모션 총괄</h3>
+                    <p class="project-desc">객실 패키지 연계 및 가정의 달 프로모션을 기획하여 브랜드 인지도와 매출 증대를 이끌었습니다.</p>
+                </div>
+            </a>
+
+            <a href="yumac.html" class="project-card">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <span class="project-tag">CRM & PERFORMANCE</span>
+                    <span class="project-company">유맥에프앤알</span>
+                    <h3 class="project-title">다담리테일 CRM 개인화 마케팅</h3>
+                    <p class="project-desc">채널톡, 애피어 등 마테크 툴을 도입하여 맞춤형 캠페인을 설계하고 퍼포먼스 광고를 최적화했습니다.</p>
+                </div>
+            </a>
+
+            <a href="yumac.html" class="project-card">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <span class="project-tag">CONTENTS & PR</span>
+                    <span class="project-company">유맥에프앤알</span>
+                    <h3 class="project-title">메가박스 온·오프라인 캠페인 기획</h3>
+                    <p class="project-desc">유튜브 및 IG 영상 광고를 기획하고, 인플루언서 및 광주FC 등과의 오프라인 협업 마케팅을 진행했습니다.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('show'); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .project-card').forEach((el, index) => {
+            el.style.animationDelay = `${(index % 3) * 0.2}s`; 
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
