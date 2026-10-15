@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>센터원플래닛 | Kang JiHee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        body, html { margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; background-color: #111; color: #fff; }
+
+        .nav-bar { padding: 20px 40px; position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box; z-index: 10; }
+        .back-btn { color: #fff; text-decoration: none; font-size: 1.1rem; opacity: 0.7; transition: opacity 0.3s; }
+        .back-btn:hover { opacity: 1; }
+
+        /* 배경 이미지: 메디컬/신뢰감을 주는 깨끗하고 모던한 공간 이미지 적용 */
+        .header-bg {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(17,17,17,1)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex; align-items: flex-end; padding-bottom: 50px;
+        }
+
+        .header-content { max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px; }
+        .period { color: #aaa; font-size: 1rem; margin-bottom: 10px; display: block; }
+        .company-name { font-size: 3rem; font-weight: 700; margin: 0 0 10px 0; }
+        .role { font-size: 1.2rem; color: #fff; font-weight: 300; margin-bottom: 30px;}
+        
+        .action-group { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .link-btn {
+            padding: 12px 24px; background: rgba(255, 255, 255, 0.1); color: #fff;
+            text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px; font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease;
+        }
+        .link-btn:hover { background: #fff; color: #111; }
+
+        .content-section { max-width: 1000px; margin: 60px auto 100px; padding: 0 20px; }
+
+        .one-liner {
+            font-size: 1.5rem; line-height: 1.6; font-weight: 500; margin-bottom: 60px;
+            color: #ddd; border-left: 4px solid #fff; padding-left: 20px;
+        }
+
+        .achievement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px; }
+        @media (max-width: 768px) { .achievement-grid { grid-template-columns: 1fr; } }
+
+        .achieve-box { background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333; }
+        .achieve-box.full-width { grid-column: 1 / -1; }
+        
+        .achieve-box h3 { color: #fff; margin-top: 0; font-size: 1.3rem; margin-bottom: 20px; }
+        .achieve-box ul { padding-left: 20px; color: #aaa; line-height: 1.7; margin: 0; }
+        .achieve-box li { margin-bottom: 10px; }
+
+        .project-section-title { font-size: 1.8rem; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        @media (max-width: 768px) { .project-grid { grid-template-columns: 1fr; } }
+
+        .project-card {
+            background: #1e1e1e; border: 1px solid #333; border-radius: 16px; overflow: hidden;
+            text-decoration: none; color: #fff; display: flex; flex-direction: column; transition: all 0.4s ease;
+        }
+        .project-card:hover { transform: translateY(-10px); border-color: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        .project-img { width: 100%; height: 220px; background-color: #2a2a2a; background-size: cover; background-position: center; border-bottom: 1px solid #333; }
+        .project-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-tag {
+            align-self: flex-start; background: rgba(255, 255, 255, 0.1); color: #ddd;
+            padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px;
+        }
+        .project-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 15px 0; line-height: 1.4; }
+        .project-desc { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </div>
+
+    <div class="header-bg">
+        <div class="header-content">
+            <span class="period">2019.06 ~ 2020.11</span>
+            <h1 class="company-name">센터원플래닛</h1>
+            <div class="role">청연 메디컬그룹 홍보팀 주임/팀원</div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="one-liner">
+            "메디컬 브랜드의 신뢰도를 높이는 디지털 채널 전략과<br>
+            온·오프라인 캠페인을 운영했습니다."
+        </div>
+
+        <div class="achievement-grid">
+            <div class="achieve-box full-width">
+                <h3>Digital Contents & PR</h3>
+                <ul>
+                    <li>청연한방병원, 청연101한의원 등 메디컬 브랜드 공식 인스타그램 및 블로그 채널 빌드업 및 운영</li>
+                    <li>의료 서비스 특성을 살린 신뢰도 높은 SNS 콘텐츠 및 프로모션 이벤트 기획</li>
+                </ul>
+            </div>
+            
+            <div class="achieve-box full-width">
+                <h3>Offline PR & Event Management</h3>
+                <ul>
+                    <li>신규 온·오프라인 광고 매체 발굴 및 마케팅 믹스(Media Mix) 제안</li>
+                    <li>지자체 및 B2B 기업 연계 대외 행사 기획 및 총괄 운영</li>
+                    <li>내부 결속을 위한 임직원 대상 사내 브랜드 행사 기획 및 실행</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 하단 프로젝트 연동 영역 -->
+        <h2 class="project-section-title">Projects & Campaigns</h2>
+        <div class="project-grid">
+            <!-- 청연 메디컬그룹 온라인 채널 운영 프로젝트 -->
+            <a href="project-centerone.html" class="project-card">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="project-info">
+                    <span class="project-tag">CONTENTS & PR</span>
+                    <h3 class="project-title">메디컬 브랜드 채널 리뉴얼 및 운영</h3>
+                    <p class="project-desc">청연한방병원 등 브랜드 공식 SNS 채널을 구축하고, 타겟 맞춤형 의료 콘텐츠를 기획하여 브랜드 신뢰도를 향상시켰습니다.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
