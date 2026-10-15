@@ -1,0 +1,27 @@
+# 1. 모든 일반 검색 엔진 및 크롤러 차단 (구글, 네이버 등)
+User-agent: *
+Disallow: /
+
+# 2. OpenAI (ChatGPT) 학습용 및 검색용 봇 차단
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+
+# 3. Google AI (제미나이 등) 학습 데이터 수집 봇 차단
+User-agent: Google-Extended
+Disallow: /
+
+# 4. Anthropic (클로드) 데이터 수집 봇 차단
+User-agent: Claude-Web
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+
+# 5. 무단 웹 스크래핑 및 기타 AI 학습용 봇 차단
+User-agent: CCBot
+Disallow: /
+User-agent: omgili
+Disallow: /
+User-agent: omgilibot
+Disallow: /
