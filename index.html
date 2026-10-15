@@ -10,10 +10,8 @@
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         /* 2. 감성적인 바탕/명조체 폰트 (마루부리) */
         @import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
-        /* 3. 우아한 영문 매거진 폰트 (Playfair Display) */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
-        /* 4. 다정한 손글씨 폰트 (교보 손글씨) */
-        @font-face { font-family: 'KyoboHand'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff'); font-weight: normal; font-style: normal; }
+        /* 3. J가 뚜렷하고 우아한 하이엔드 매거진 폰트 (Cormorant Garamond) */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap');
 
         body, html { margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; background-color: #fcfbfa; color: #2c2a29; }
 
@@ -36,7 +34,6 @@
             display: flex; flex-direction: column; align-items: center; margin-top: -50px; 
         }
         
-        /* 페이드아웃 속도를 0.8초로 여유 있게 설정 */
         .slogan-container {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 90px; margin-bottom: 25px; transition: opacity 0.8s ease;
@@ -45,17 +42,17 @@
         .typewriter-box { display: flex; align-items: center; height: 35px; }
         .fade-in-box { height: 50px; display: flex; align-items: center; overflow: hidden; }
 
-        /* 첫 번째 줄 (타이핑): 정돈된 마루부리체 */
+        /* 첫 번째 줄 (타이핑): 정돈된 마루부리체, 따뜻한 브라운 컬러 */
         .slogan-text { font-family: 'MaruBuri', serif; font-size: 1.25rem; font-weight: 400; color: #8e7a68; letter-spacing: -0.5px; }
         
-        /* 두 번째 줄 (떠오르기): 감성적인 손글씨체 적용 + 떠오르는 속도 늦춤 */
+        /* 두 번째 줄 (떠오르기): 마루부리체 유지, 굵기/크기 확대, 이름과 동일한 다크 차콜 컬러 */
         .slogan-text-highlight { 
-            font-family: 'KyoboHand', cursive; 
-            font-size: 1.8rem; /* 필기체라 크기를 살짝 키움 */
-            color: #c9796e; 
-            letter-spacing: 1px; 
+            font-family: 'MaruBuri', serif; 
+            font-size: 1.6rem; 
+            font-weight: 600; 
+            color: #232221; 
+            letter-spacing: -0.5px; 
             opacity: 0; transform: translateY(25px); 
-            /* 떠오르는 속도를 1.2초로 늦추고 훨씬 부드러운 곡선을 줌 */
             transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); 
         }
         
@@ -63,15 +60,15 @@
         .slogan-container.fade-out { opacity: 0; }
         .cursor { display: inline-block; width: 2px; height: 1.2rem; background-color: #8e7a68; margin-left: 4px; animation: blink 1s step-end infinite; }
 
-        /* 이름 폰트를 하이엔드 매거진 스타일(Playfair Display)로 변경 */
-        h1 { font-family: 'Playfair Display', serif; font-size: 4.2rem; font-weight: 600; font-style: italic; margin: 0 0 10px 0; letter-spacing: 1px; color: #232221; }
+        /* J가 또렷한 우아한 세리프 폰트 적용 */
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 600; font-style: italic; margin: 0 0 10px 0; letter-spacing: 1px; color: #232221; }
         .hero-text p { font-size: 1.15rem; font-weight: 400; color: #6d6a66; letter-spacing: 6px; margin: 0; }
 
         .scroll-indicator { position: absolute; bottom: 50px; display: flex; flex-direction: column; align-items: center; opacity: 0; animation: fadeIn 1s ease-out 1.5s forwards; }
         .mouse { width: 26px; height: 40px; border: 2px solid #8e7a68; border-radius: 15px; position: relative; }
         .wheel { width: 4px; height: 8px; background-color: #8e7a68; border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollWheel 1.5s infinite; }
 
-        /* [Work Experience & Projects] 유지 */
+        /* [Work Experience & Projects] */
         .section-container { padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 1.4rem; margin-bottom: 60px; letter-spacing: 4px; color: #504d49; font-weight: 600; }
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
@@ -115,7 +112,6 @@
                 </div>
             </div>
 
-            <!-- 우아한 영문 필기체/세리프 폰트로 변경된 이름 -->
             <h1>Kang JiHee</h1>
             <p>BRAND MARKETER</p>
         </div>
@@ -189,10 +185,11 @@
             observer.observe(el);
         });
 
+        // 따옴표 제거됨
         const slogans = [
-            { line1: "고객의 일상에 브랜드의 이야기를", line2: "'연결합니다'" },
-            { line1: "고객의 마음을 읽고, 브랜드의", line2: "'내일을 씁니다'" },
-            { line1: "브랜드의 진심과 고객의 시선을", line2: "'부드럽게 잇는 마케터'" }
+            { line1: "고객의 일상에 브랜드의 이야기를", line2: "연결합니다" },
+            { line1: "고객의 마음을 읽고, 브랜드의", line2: "내일을 씁니다" },
+            { line1: "브랜드의 진심과 고객의 시선을", line2: "부드럽게 잇는 마케터" }
         ];
         
         let sloganIndex = 0;
@@ -204,8 +201,6 @@
         
         function startSequence() {
             containerElement.classList.remove("fade-out");
-            
-            // 완전히 투명한 상태에서 다음 문장으로 세팅하여 깜빡임(오류) 방지
             line1Element.textContent = "";
             line2Element.textContent = slogans[sloganIndex].line2;
             charIndex = 0;
@@ -226,12 +221,10 @@
                 cursorElement.style.display = "none"; 
                 line2Element.classList.add("show-up"); 
                 
-                // 떠오른 뒤 3초 대기
                 setTimeout(() => {
                     containerElement.classList.add("fade-out");
-                    line2Element.classList.remove("show-up"); // 미리 클래스 제거
+                    line2Element.classList.remove("show-up"); 
                     
-                    // 페이드아웃(0.8초)이 완전히 끝난 후 다음 문장 준비
                     setTimeout(() => {
                         sloganIndex = (sloganIndex + 1) % slogans.length;
                         startSequence();
