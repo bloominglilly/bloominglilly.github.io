@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Marketer | Kang JiHee</title>
-    <!-- 1단계: 검색엔진 및 AI 수집 차단 메타 태그 -->
+    <!-- 검색엔진 및 AI 수집 차단 메타 태그 -->
     <meta name="robots" content="noindex, nofollow">
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         
-        /* 전체 무드를 웜 화이트 기반의 차분하고 부드러운 톤으로 설정 */
         body, html { margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; background-color: #fcfbfa; color: #2c2a29; }
 
-        /* [Hero Section] 부드럽게 흐르는 파스텔 마블 그라데이션 효과 */
+        /* [Hero Section] 파스텔 마블 배경 */
         .hero-section { 
             height: 100vh; 
             display: flex; 
@@ -21,108 +20,96 @@
             align-items: center; 
             position: relative;
             overflow: hidden;
-            /* 여러 파스텔 컬러가 경계선 없이 섞이도록 다중 선형 그라데이션을 겹치고 크기를 키움 */
             background: linear-gradient(135deg, #f3e9f9 0%, #faecd7 25%, #e1f5fe 50%, #e8f5e9 75%, #fae1eb 100%);
             background-size: 400% 400%;
-            /* 25초 동안 물 흐르듯 잔잔하게 움직이는 애니메이션 실행 */
             animation: gentleMarbleFlow 25s ease infinite;
         }
 
-        /* 입체적인 마블 일렁임을 위한 부드러운 오버레이 레이어 추가 */
         .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 60%),
                         radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 50%);
-            mix-blend-mode: overlay;
-            pointer-events: none;
+            mix-blend-mode: overlay; pointer-events: none;
         }
 
-        /* 텍스트가 마블에 묻히지 않도록 정돈 */
-        .hero-text { text-align: center; animation: fadeIn 1.5s ease-out; z-index: 2; }
+        .hero-text { text-align: center; animation: fadeIn 1.5s ease-out; z-index: 2; display: flex; flex-direction: column; align-items: center; }
         
-        h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 1px; color: #232221; }
-        .hero-text p { font-size: 1.15rem; font-weight: 400; color: #6d6a66; letter-spacing: 6px; margin-top: 0; }
+        /* 타이핑 슬로건 스타일 */
+        .typewriter-box {
+            height: 30px; /* 고정 높이로 레이아웃 흔들림 방지 */
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .slogan-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #8e7a68; /* 따뜻한 어스톤 브라운 */
+            letter-spacing: -0.5px;
+        }
 
+        /* 깜빡이는 커서 */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.3rem;
+            background-color: #8e7a68;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        h1 { font-size: 3.8rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: 2px; color: #232221; }
+        .hero-text p { font-size: 1.15rem; font-weight: 400; color: #6d6a66; letter-spacing: 6px; margin: 0; }
+
+        /* 스크롤 다운 인디케이터 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards; /* 텍스트 뜬 후 나타남 */
+        }
+
+        .mouse {
+            width: 26px;
+            height: 40px;
+            border: 2px solid #8e7a68;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 4px;
+            height: 8px;
+            background-color: #8e7a68;
+            border-radius: 2px;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 1.5s infinite;
+        }
+
+        /* [Work Experience & Projects] 유지 */
         .section-container { padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
-        
-        /* 섹션 타이틀 서체와 레터 스페이싱 강화 */
         .section-title { text-align: center; font-size: 1.4rem; margin-bottom: 60px; letter-spacing: 4px; color: #504d49; font-weight: 600; }
-
-        /* [Work Experience] 웜 톤의 감성적인 카드 디자인 */
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
         
-        .card { 
-            background: #ffffff; 
-            border: 1px solid #e9e6e2; 
-            border-radius: 16px; 
-            padding: 50px 40px; 
-            text-decoration: none; 
-            color: #2c2a29; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            min-height: 120px; 
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            opacity: 0; 
-            transform: translateY(40px);
-            box-shadow: 0 4px 20px rgba(118, 108, 93, 0.03);
-        }
-
+        .card { background: #ffffff; border: 1px solid #e9e6e2; border-radius: 16px; padding: 50px 40px; text-decoration: none; color: #2c2a29; display: flex; flex-direction: column; justify-content: center; min-height: 120px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateY(40px); box-shadow: 0 4px 20px rgba(118, 108, 93, 0.03); }
         .card h3 { font-size: 1.7rem; margin: 0 0 12px 0; font-weight: 600; letter-spacing: -0.5px; color: #232221; transition: color 0.4s; }
         .card p { font-size: 1.05rem; color: #847f7a; margin: 0; line-height: 1.5; font-weight: 300; transition: color 0.4s; }
-
-        /* 마우스 호버 시 자연스럽고 포근한 마블 컬러 글로우 효과 */
-        .card:hover { 
-            border-color: #faebd7; /* 따뜻한 살구빛 테두리 */
-            background: #ffffff;
-            transform: translateY(-6px) !important;
-            box-shadow: 0 20px 40px rgba(212, 185, 155, 0.12), 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .card:hover h3 { color: #8e7a68; } /* 부드러운 어스톤(Earth-tone) 브라운으로 변경 */
-        .card:hover p { color: #6d6a66; }
-
-        /* [Project Highlights] 자연스러운 썸네일 카드 */
-        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .card:hover { border-color: #faebd7; transform: translateY(-6px) !important; box-shadow: 0 20px 40px rgba(212, 185, 155, 0.12), 0 1px 3px rgba(0,0,0,0.02); }
+        .card:hover h3 { color: #8e7a68; }
         
-        .project-card { 
-            background: #ffffff; 
-            border: 1px solid #e9e6e2; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            text-decoration: none; 
-            color: #2c2a29; 
-            display: flex; 
-            flex-direction: column; 
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            opacity: 0; 
-            transform: translateY(40px);
-            box-shadow: 0 4px 20px rgba(118, 108, 93, 0.03);
-        }
-
-        .project-card:hover { 
-            transform: translateY(-8px) !important; 
-            border-color: #f3e9f9; /* 은은한 라벤더 테두리 */
-            box-shadow: 0 25px 50px rgba(133, 116, 150, 0.1), 0 1px 3px rgba(0,0,0,0.01); 
-        }
-
+        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .project-card { background: #ffffff; border: 1px solid #e9e6e2; border-radius: 20px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateY(40px); box-shadow: 0 4px 20px rgba(118, 108, 93, 0.03); }
+        .project-card:hover { transform: translateY(-8px) !important; border-color: #f3e9f9; box-shadow: 0 25px 50px rgba(133, 116, 150, 0.1), 0 1px 3px rgba(0,0,0,0.01); }
         .project-img { width: 100%; height: 220px; background-color: #f5f3f0; background-size: cover; background-position: center; border-bottom: 1px solid #f0edea; }
         .project-info { padding: 30px 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        
-        /* 카테고리 태그도 마블 무드에 맞춘 파스텔 무드로 전환 */
-        .project-tag { 
-            align-self: flex-start; 
-            background: #fbf0ee; /* 연한 살구/핑크빛 */
-            color: #c9796e; 
-            padding: 5px 12px; 
-            border-radius: 30px; 
-            font-size: 0.75rem; 
-            font-weight: 600; 
-            margin-bottom: 16px; 
-            letter-spacing: 0.5px; 
-        }
-        
+        .project-tag { align-self: flex-start; background: #fbf0ee; color: #c9796e; padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px; }
         .project-company { font-size: 0.85rem; color: #9c9792; margin-bottom: 8px; font-weight: 500; }
         .project-title { font-size: 1.2rem; font-weight: 600; margin: 0 0 12px 0; line-height: 1.42; color: #232221; }
         .project-desc { font-size: 0.95rem; color: #6d6a66; line-height: 1.6; margin: 0; font-weight: 300; }
@@ -131,59 +118,58 @@
         
         .show { animation: popUp 0.8s forwards ease-out; }
         
-        /* 천천히 마블이 굽이치며 움직이는 애니메이션 공식 */
-        @keyframes gentleMarbleFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        @keyframes gentleMarbleFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         @keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
         @keyframes popUp { 0% { opacity: 0; transform: translateY(45px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes scrollWheel { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 12px); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <!-- 첫 화면 (파스텔 마블 배경) -->
     <div class="hero-section">
         <div class="hero-text">
+            <!-- 타이핑 슬로건 영역 -->
+            <div class="typewriter-box">
+                <span id="slogan" class="slogan-text"></span><span class="cursor"></span>
+            </div>
             <h1>Kang JiHee</h1>
             <p>BRAND MARKETER</p>
         </div>
+        
+        <!-- 스크롤 다운 인디케이터 -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
     </div>
 
-    <!-- WORK EXPERIENCE -->
     <div class="section-container">
         <h2 class="section-title">WORK EXPERIENCE</h2>
         <div class="card-grid">
             <a href="seoul-senior.html" class="card">
-                <h3>서울시니어스타워</h3>
-                <p>웰파크호텔, 석정온천휴스파</p>
+                <h3>서울시니어스타워</h3><p>웰파크호텔, 석정온천휴스파</p>
             </a>
             <a href="umac.html" class="card">
-                <h3>유맥에프앤알</h3>
-                <p>다담몰, 메가박스, 유맥</p>
+                <h3>유맥에프앤알</h3><p>다담몰, 메가박스, 유맥</p>
             </a>
             <a href="centerone.html" class="card">
-                <h3>센터원플래닛</h3>
-                <p>청연 메디컬그룹</p>
+                <h3>센터원플래닛</h3><p>청연 메디컬그룹</p>
             </a>
             <a href="baromake.html" class="card">
-                <h3>바로만든</h3>
-                <p>타르타르, 라라브레드</p>
+                <h3>바로만든</h3><p>타르타르, 라라브레드</p>
             </a>
         </div>
     </div>
 
-    <!-- PROJECT HIGHLIGHTS -->
     <div class="section-container" style="padding-top: 20px;">
         <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
         <div class="project-grid">
             <a href="project-wellpark.html" class="project-card">
                 <div class="project-img" style="background-image: url('DJI_0352 복사.jpg');"></div>
                 <div class="project-info">
-                    <span class="project-tag">PROMOTION</span>
-                    <span class="project-company">서울시니어스타워</span>
+                    <span class="project-tag">PROMOTION</span><span class="project-company">서울시니어스타워</span>
                     <h3 class="project-title">웰파크호텔 1주년 및 시즌 프로모션 총괄</h3>
                     <p class="project-desc">객실 패키지 연계 및 가정의 달 프로모션을 기획하여 브랜드 인지도와 매출 증대를 이끌었습니다.</p>
                 </div>
@@ -191,8 +177,7 @@
             <a href="umac.html" class="project-card">
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
-                    <span class="project-tag">CRM & PERFORMANCE</span>
-                    <span class="project-company">유맥에프앤알</span>
+                    <span class="project-tag">CRM & PERFORMANCE</span><span class="project-company">유맥에프앤알</span>
                     <h3 class="project-title">다담리테일 CRM 개인화 마케팅</h3>
                     <p class="project-desc">채널톡, 애피어 등 마테크 툴을 도입하여 맞춤형 캠페인을 설계하고 퍼포먼스 광고를 최적화했습니다.</p>
                 </div>
@@ -200,8 +185,7 @@
             <a href="umac.html" class="project-card">
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
-                    <span class="project-tag">CONTENTS & PR</span>
-                    <span class="project-company">유맥에프앤알</span>
+                    <span class="project-tag">CONTENTS & PR</span><span class="project-company">유맥에프앤알</span>
                     <h3 class="project-title">메가박스 온·오프라인 캠페인 기획</h3>
                     <p class="project-desc">유튜브 및 IG 영상 광고를 기획하고, 인플루언서 및 광주FC 등과의 오프라인 협업 마케팅을 진행했습니다.</p>
                 </div>
@@ -209,8 +193,8 @@
         </div>
     </div>
 
-    <!-- 스크롤 감지 애니메이션 -->
     <script>
+        // 스크롤 감지 애니메이션 (카드)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) { entry.target.classList.add('show'); }
@@ -221,6 +205,46 @@
             el.style.animationDelay = `${(index % 3) * 0.15}s`; 
             observer.observe(el);
         });
+
+        // 타자기 애니메이션 (슬로건)
+        const slogans = [
+            "고객의 일상에 브랜드의 이야기를 연결합니다.",
+            "고객의 마음을 읽고, 브랜드의 내일을 씁니다.",
+            "브랜드의 진심과 고객의 시선을 부드럽게 잇는 마케터."
+        ];
+        
+        let sloganIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const sloganElement = document.getElementById("slogan");
+        
+        function typeWriter() {
+            const currentSlogan = slogans[sloganIndex];
+            
+            if (isDeleting) {
+                sloganElement.textContent = currentSlogan.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                sloganElement.textContent = currentSlogan.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typingSpeed = isDeleting ? 30 : 80; // 지울 땐 빠르고, 쓸 땐 자연스러운 속도
+            
+            if (!isDeleting && charIndex === currentSlogan.length) {
+                typingSpeed = 2000; // 문장이 다 써지면 2초 대기
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                sloganIndex = (sloganIndex + 1) % slogans.length; // 다음 문장으로 넘어감
+                typingSpeed = 500; // 지워지고 나서 0.5초 대기 후 시작
+            }
+            
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        // 페이지 로드 후 1초 뒤에 타이핑 시작
+        setTimeout(typeWriter, 1000);
     </script>
 </body>
 </html>
