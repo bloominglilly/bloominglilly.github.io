@@ -27,20 +27,41 @@
             mix-blend-mode: overlay; pointer-events: none;
         }
 
-        .hero-text { text-align: center; animation: fadeIn 1.5s ease-out; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-        
-        .typewriter-box { height: 30px; margin-bottom: 25px; display: flex; align-items: center; }
-        
-        /* 슬로건에만 마루부리 폰트 적용 */
-        .slogan-text {
-            font-family: 'MaruBuri', serif;
-            font-size: 1.35rem; /* 폰트 특성에 맞춰 크기 살짝 키움 */
-            font-weight: 400;
-            color: #8e7a68;
-            letter-spacing: -0.5px;
+        /* 텍스트 영역을 살짝 위로 올림 */
+        .hero-text { 
+            text-align: center; animation: fadeIn 1.5s ease-out; z-index: 2; 
+            display: flex; flex-direction: column; align-items: center; 
+            margin-top: -50px; 
         }
+        
+        /* 두 줄로 나뉜 슬로건 컨테이너 (고정 높이로 레이아웃 흔들림 방지) */
+        .slogan-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 80px; margin-bottom: 25px; transition: opacity 0.5s ease;
+        }
+        
+        /* 첫 번째 줄: 타이핑 영역 */
+        .typewriter-box { display: flex; align-items: center; height: 35px; }
+        
+        /* 두 번째 줄: 떠오르는 영역 */
+        .fade-in-box { height: 40px; display: flex; align-items: center; overflow: hidden; }
 
-        .cursor { display: inline-block; width: 2px; height: 1.3rem; background-color: #8e7a68; margin-left: 4px; animation: blink 1s step-end infinite; }
+        /* 마루부리 폰트 공통 설정 */
+        .slogan-text { font-family: 'MaruBuri', serif; font-size: 1.25rem; font-weight: 400; color: #8e7a68; letter-spacing: -0.5px; }
+        
+        /* 두 번째 줄 (강조) 서체 스타일 */
+        .slogan-text-highlight { 
+            font-family: 'MaruBuri', serif; font-size: 1.4rem; font-weight: 600; color: #c9796e; letter-spacing: -0.5px; 
+            opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        
+        /* 두 번째 줄 떠오르기 애니메이션 트리거 */
+        .slogan-text-highlight.show-up { opacity: 1; transform: translateY(0); }
+        
+        /* 전체 컨테이너 페이드아웃 (사라질 때) */
+        .slogan-container.fade-out { opacity: 0; }
+
+        .cursor { display: inline-block; width: 2px; height: 1.2rem; background-color: #8e7a68; margin-left: 4px; animation: blink 1s step-end infinite; }
 
         h1 { font-size: 3.8rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: 2px; color: #232221; }
         .hero-text p { font-size: 1.15rem; font-weight: 400; color: #6d6a66; letter-spacing: 6px; margin: 0; }
@@ -49,6 +70,7 @@
         .mouse { width: 26px; height: 40px; border: 2px solid #8e7a68; border-radius: 15px; position: relative; }
         .wheel { width: 4px; height: 8px; background-color: #8e7a68; border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollWheel 1.5s infinite; }
 
+        /* [Work Experience & Projects] 유지 */
         .section-container { padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 1.4rem; margin-bottom: 60px; letter-spacing: 4px; color: #504d49; font-weight: 600; }
         
@@ -84,9 +106,17 @@
 
     <div class="hero-section">
         <div class="hero-text">
-            <div class="typewriter-box">
-                <span id="slogan" class="slogan-text"></span><span class="cursor"></span>
+            
+            <!-- 슬로건 영역 (2줄 구조) -->
+            <div class="slogan-container" id="slogan-container">
+                <div class="typewriter-box">
+                    <span id="slogan-line1" class="slogan-text"></span><span class="cursor" id="cursor1"></span>
+                </div>
+                <div class="fade-in-box">
+                    <span id="slogan-line2" class="slogan-text-highlight"></span>
+                </div>
             </div>
+
             <h1>Kang JiHee</h1>
             <p>BRAND MARKETER</p>
         </div>
@@ -160,38 +190,59 @@
             observer.observe(el);
         });
 
-        // 새롭게 수정된 타자기 애니메이션 (마루부리 폰트 + 지우기 생략)
+        // 분리된 2줄 타이핑 + 떠오르기 애니메이션
         const slogans = [
-            "고객의 일상에 브랜드의 이야기를 연결합니다.",
-            "고객의 마음을 읽고, 브랜드의 내일을 씁니다.",
-            "브랜드의 진심과 고객의 시선을 부드럽게 잇는 마케터."
+            { line1: "고객의 일상에 브랜드의 이야기를", line2: "'연결합니다'" },
+            { line1: "고객의 마음을 읽고, 브랜드의", line2: "'내일을 씁니다'" },
+            { line1: "브랜드의 진심과 고객의 시선을", line2: "'부드럽게 잇는 마케터'" }
         ];
         
         let sloganIndex = 0;
         let charIndex = 0;
-        const sloganElement = document.getElementById("slogan");
+        const line1Element = document.getElementById("slogan-line1");
+        const line2Element = document.getElementById("slogan-line2");
+        const containerElement = document.getElementById("slogan-container");
+        const cursorElement = document.getElementById("cursor1");
         
-        function typeWriter() {
-            const currentSlogan = slogans[sloganIndex];
+        function startSequence() {
+            // 초기화
+            containerElement.classList.remove("fade-out");
+            line2Element.classList.remove("show-up");
+            line1Element.textContent = "";
+            line2Element.textContent = slogans[sloganIndex].line2;
+            charIndex = 0;
+            cursorElement.style.display = "inline-block";
             
-            sloganElement.textContent = currentSlogan.substring(0, charIndex + 1);
+            setTimeout(typeWriter, 500);
+        }
+
+        function typeWriter() {
+            const currentLine1 = slogans[sloganIndex].line1;
+            
+            line1Element.textContent = currentLine1.substring(0, charIndex + 1);
             charIndex++;
             
-            if (charIndex < currentSlogan.length) {
-                // 아직 타자 칠 글자가 남았을 때 (타이핑 속도)
+            if (charIndex < currentLine1.length) {
+                // 타자 치는 중
                 setTimeout(typeWriter, 80);
             } else {
-                // 문장이 끝났을 때 (2.5초 대기 후 글씨 지우고 다음 문장 시작)
+                // 첫 줄 타자 완료
+                cursorElement.style.display = "none"; // 커서 숨기기
+                line2Element.classList.add("show-up"); // 두 번째 줄 떠오르기
+                
+                // 2.5초 대기 후 전체 부드럽게 지우기
                 setTimeout(() => {
-                    sloganElement.textContent = ""; // 한 번에 비움
-                    charIndex = 0;
-                    sloganIndex = (sloganIndex + 1) % slogans.length;
-                    setTimeout(typeWriter, 500); // 0.5초 쉰 후 새 문장 타이핑 시작
+                    containerElement.classList.add("fade-out");
+                    setTimeout(() => {
+                        sloganIndex = (sloganIndex + 1) % slogans.length;
+                        startSequence();
+                    }, 500); // 완전히 투명해지면 다음 문장 시작
                 }, 2500);
             }
         }
         
-        setTimeout(typeWriter, 1000);
+        // 페이지 로드 후 시작
+        setTimeout(startSequence, 1000);
     </script>
 </body>
 </html>
