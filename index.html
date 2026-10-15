@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Marketer | Kang JiHee</title>
+    <!-- 검색 금지 메타 태그 -->
     <meta name="robots" content="noindex, nofollow">
     <style>
-        /* 1. 기본 고딕 폰트 (Pretendard) */
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        /* 1. 기본 고딕 폰트 (Pretendard) - 안정적인 CDN으로 교체 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         /* 2. 감성적인 바탕/명조체 폰트 (마루부리) */
         @import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
         /* 3. J가 뚜렷하고 우아한 하이엔드 매거진 폰트 (Cormorant Garamond) */
@@ -45,7 +46,7 @@
         /* 첫 번째 줄 (타이핑): 정돈된 마루부리체, 따뜻한 브라운 컬러 */
         .slogan-text { font-family: 'MaruBuri', serif; font-size: 1.25rem; font-weight: 400; color: #8e7a68; letter-spacing: -0.5px; }
         
-        /* 두 번째 줄 (떠오르기): 마루부리체 유지, 크기 확대, 따뜻한 브라운 컬러 */
+        /* 두 번째 줄 (떠오르기): 지희님이 직접 수정하신 안정적인 디자인 수치 적용 */
         .slogan-text-highlight { 
             font-family: 'MaruBuri', serif; 
             font-size: 1.4rem; 
@@ -142,7 +143,7 @@
         </div>
     </div>
 
-<!-- PROJECT HIGHLIGHTS 섹션 (메인 화면) -->
+    <!-- PROJECT HIGHLIGHTS 섹션 (메인 화면) -->
     <div class="section-container" style="padding-top: 20px;">
         <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
         <div class="project-grid">
@@ -294,7 +295,18 @@
         </div>
     </div>
 
-        // 따옴표 제거됨
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('show'); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .project-card').forEach((el, index) => {
+            el.style.animationDelay = `${(index % 3) * 0.15}s`; 
+            observer.observe(el);
+        });
+
         const slogans = [
             { line1: "고객의 일상에 브랜드의 이야기를", line2: "연결합니다" },
             { line1: "고객의 마음을 읽고, 브랜드의", line2: "내일을 씁니다" },
