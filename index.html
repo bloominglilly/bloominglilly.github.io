@@ -78,3 +78,111 @@
             background: #1e1e1e;
             border: 1px solid #333;
             border-radius: 16px;
+            padding: 50px 40px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 150px;
+            transition: all 0.4s ease; 
+            
+            /* 처음에 투명하고 화면 아래로 40px 내려가 있도록 꽁꽁 숨겨둡니다 */
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* 스크롤을 내려서 자바스크립트가 .show 클래스를 붙여주면 실행될 애니메이션 */
+        .card.show {
+            animation: popUp 0.8s forwards ease-out;
+        }
+
+        /* 마우스를 올렸을 때(Hover) 효과 */
+        .card:hover {
+            transform: translateY(-10px) !important;
+            border-color: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #252525;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Kang JiHee</h1>
+            <p>BRAND MARKETER</p>
+        </div>
+    </div>
+
+    <div class="work-section">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        
+        <div class="card-grid">
+            <a href="seoul-senior.html" class="card">
+                <h3>서울시니어스타워</h3>
+                <p>웰파크호텔<br>석정온천휴스파</p>
+            </a>
+            <a href="yumac.html" class="card">
+                <h3>유맥에프앤알</h3>
+                <p>다담몰, 다담식자재마트<br>메가박스, 유맥</p>
+            </a>
+            <a href="centerone.html" class="card">
+                <h3>센터원플래닛</h3>
+                <p>청연 메디컬그룹</p>
+            </a>
+            <a href="baromake.html" class="card">
+                <h3>바로만든</h3>
+                <p>타르타르<br>라라브레드</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- 스크롤을 감지하는 마법의 자바스크립트 -->
+    <script>
+        // 화면에 요소가 나타나는지 감지하는 관찰자(Observer) 생성
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // 카드가 화면에 보이기 시작하면
+                if (entry.isIntersecting) {
+                    // 'show' 클래스를 추가해서 애니메이션 실행!
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1 // 카드가 화면에 10%만 보여도 애니메이션 시작
+        });
+
+        // 모든 카드 요소를 찾아서 관찰 시작 및 딜레이 설정
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            // 0.2초 간격으로 카드들이 순서대로 떠오르도록 시간차를 줍니다.
+            card.style.animationDelay = `${index * 0.2}s`;
+            observer.observe(card); // 각각의 카드를 감시하라고 지시
+        });
+    </script>
+</body>
+</html>
