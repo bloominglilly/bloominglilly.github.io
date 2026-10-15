@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Marketer | Kang JiHee</title>
-    <!-- 화살표 아이콘을 위한 폰트어썸 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- 화살표가 빠졌으므로 폰트어썸 링크도 제거하여 사이트 로딩 속도를 더 가볍게 만들었습니다 -->
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         
@@ -19,11 +18,11 @@
         .section-container { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 1.5rem; margin-bottom: 50px; letter-spacing: 3px; color: #fff; font-weight: 500; }
 
-        /* 시크하고 모던한 미니멀 타이포 카드 디자인 */
+        /* 극한의 미니멀 타이포 카드 디자인 */
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
         
         .card { 
-            background: transparent; /* 배경을 투명하게 해서 더 시크하게 */
+            background: transparent; 
             border: 1px solid #333; 
             border-radius: 12px; 
             padding: 50px 40px; 
@@ -36,31 +35,16 @@
             transition: all 0.4s ease; 
             opacity: 0; 
             transform: translateY(40px);
-            position: relative;
         }
 
-        /* 카드 우측 상단 화살표 */
-        .card .arrow-icon {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            font-size: 1.5rem;
-            color: #444;
-            transition: all 0.4s ease;
-        }
+        .card h3 { font-size: 1.8rem; margin: 0 0 12px 0; font-weight: 600; letter-spacing: -0.5px; transition: color 0.4s ease; }
+        .card p { font-size: 1.05rem; color: #777; margin: 0; line-height: 1.5; font-weight: 300; transition: color 0.4s ease; }
 
-        .card h3 { font-size: 1.8rem; margin: 0 0 12px 0; font-weight: 600; letter-spacing: -0.5px; }
-        .card p { font-size: 1.05rem; color: #777; margin: 0; line-height: 1.5; font-weight: 300; }
-
-        /* 마우스 호버 시 효과: 테두리가 밝아지고 화살표가 우측 상단으로 뻗어감 */
+        /* 마우스 호버 시 효과: 테두리가 밝아지고 살짝 떠오르며 글자색 대비 강화 */
         .card:hover { 
             border-color: #fff; 
             background: #161616;
             transform: translateY(-5px) !important;
-        }
-        .card:hover .arrow-icon {
-            color: #fff;
-            transform: translate(5px, -5px); /* 대각선 위로 이동 */
         }
         .card:hover h3 { color: #fff; }
         .card:hover p { color: #ccc; }
@@ -93,31 +77,27 @@
         </div>
     </div>
 
-    <!-- WORK EXPERIENCE 섹션 (미니멀 타이포 & 화살표 디자인) -->
+    <!-- WORK EXPERIENCE 섹션 (극한의 미니멀 타이포 디자인) -->
     <div class="section-container">
         <h2 class="section-title">WORK EXPERIENCE</h2>
         <div class="card-grid">
             
             <a href="seoul-senior.html" class="card">
-                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
                 <h3>서울시니어스타워</h3>
                 <p>웰파크호텔, 석정온천휴스파</p>
             </a>
 
             <a href="yumac.html" class="card">
-                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
                 <h3>유맥에프앤알</h3>
                 <p>다담몰, 다담식자재마트, 메가박스, 유맥</p>
             </a>
 
             <a href="centerone.html" class="card">
-                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
                 <h3>센터원플래닛</h3>
                 <p>청연 메디컬그룹</p>
             </a>
 
             <a href="baromake.html" class="card">
-                <i class="fa-solid fa-arrow-right-long arrow-icon" style="transform: rotate(-45deg);"></i>
                 <h3>바로만든</h3>
                 <p>타르타르, 라라브레드</p>
             </a>
