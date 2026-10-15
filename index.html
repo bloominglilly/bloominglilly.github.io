@@ -15,7 +15,7 @@
             color: #ffffff;
         }
 
-        /* 1. 첫 화면 (스크롤 유도를 위해 다시 화면에 꽉 차도록 100vh로 설정) */
+        /* 1. 첫 화면 (Hero Section) */
         .hero-section {
             height: 100vh; 
             display: flex;
@@ -45,9 +45,9 @@
             margin-top: 0;
         }
 
-        /* 2. 회사별 카드형 갤러리 섹션 */
-        .work-section {
-            padding: 100px 20px;
+        /* 공통 섹션 스타일 */
+        .section-container {
+            padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -61,43 +61,30 @@
             font-weight: 500;
         }
 
+        /* 2. 회사별 카드 (Work Experience) */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            margin-bottom: 40px;
         }
 
-        @media (max-width: 768px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* 3. 카드 개별 디자인 */
         .card {
             background: #1e1e1e;
             border: 1px solid #333;
             border-radius: 16px;
-            padding: 50px 40px;
+            padding: 40px;
             text-decoration: none;
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 150px;
+            min-height: 120px;
             transition: all 0.4s ease; 
-            
-            /* 처음에 투명하고 화면 아래로 40px 내려가 있도록 꽁꽁 숨겨둡니다 */
             opacity: 0;
             transform: translateY(40px);
         }
 
-        /* 스크롤을 내려서 자바스크립트가 .show 클래스를 붙여주면 실행될 애니메이션 */
-        .card.show {
-            animation: popUp 0.8s forwards ease-out;
-        }
-
-        /* 마우스를 올렸을 때(Hover) 효과 */
         .card:hover {
             transform: translateY(-10px) !important;
             border-color: #fff;
@@ -106,17 +93,105 @@
         }
 
         .card h3 {
-            font-size: 1.8rem;
-            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
             font-weight: 700;
         }
 
         .card p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #aaa;
             margin: 0;
             line-height: 1.5;
         }
+
+        /* 3. 프로젝트 하이라이트 (세로형 썸네일 카드) */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 배치 */
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) !important;
+            border-color: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* 썸네일 이미지 영역 */
+        .project-img {
+            width: 100%;
+            height: 220px;
+            background-color: #2a2a2a; /* 이미지가 없을 때 기본 색상 */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #333;
+        }
+
+        /* 텍스트 정보 영역 */
+        .project-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* 구분 태그 (CRM, 콘텐츠 등) */
+        .project-tag {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .project-company {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 모바일 반응형 처리 */
+        @media (max-width: 768px) {
+            .card-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 애니메이션 */
+        .show { animation: popUp 0.8s forwards ease-out; }
 
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(20px); }
@@ -138,17 +213,17 @@
         </div>
     </div>
 
-    <div class="work-section">
+    <!-- WORK EXPERIENCE 섹션 -->
+    <div class="section-container">
         <h2 class="section-title">WORK EXPERIENCE</h2>
-        
         <div class="card-grid">
             <a href="seoul-senior.html" class="card">
                 <h3>서울시니어스타워</h3>
-                <p>웰파크호텔<br>석정온천휴스파</p>
+                <p>웰파크호텔, 석정온천휴스파</p>
             </a>
             <a href="yumac.html" class="card">
                 <h3>유맥에프앤알</h3>
-                <p>다담몰, 다담식자재마트<br>메가박스, 유맥</p>
+                <p>다담몰, 메가박스, 유맥</p>
             </a>
             <a href="centerone.html" class="card">
                 <h3>센터원플래닛</h3>
@@ -156,32 +231,68 @@
             </a>
             <a href="baromake.html" class="card">
                 <h3>바로만든</h3>
-                <p>타르타르<br>라라브레드</p>
+                <p>타르타르, 라라브레드</p>
             </a>
         </div>
     </div>
 
-    <!-- 스크롤을 감지하는 마법의 자바스크립트 -->
+    <!-- PROJECT HIGHLIGHTS 섹션 (새로 추가된 세로형 카드) -->
+    <div class="section-container" style="padding-top: 20px;">
+        <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
+        <div class="project-grid">
+            
+            <!-- 프로젝트 카드 1 -->
+            <a href="seoul-senior.html" class="project-card">
+                <!-- 추후 url('이미지파일이름.jpg') 부분에 사진을 넣으면 됩니다 -->
+                <div class="project-img" style="background-image: url('DJI_0352 복사.jpg');"></div>
+                <div class="project-info">
+                    <span class="project-tag">PROMOTION</span>
+                    <span class="project-company">서울시니어스타워</span>
+                    <h3 class="project-title">웰파크호텔 1주년 및 시즌 프로모션 총괄</h3>
+                    <p class="project-desc">객실 패키지 연계 및 가정의 달 프로모션을 기획하여 브랜드 인지도와 매출 증대를 이끌었습니다.</p>
+                </div>
+            </a>
+
+            <!-- 프로젝트 카드 2 -->
+            <a href="yumac.html" class="project-card">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <span class="project-tag">CRM & PERFORMANCE</span>
+                    <span class="project-company">유맥에프앤알</span>
+                    <h3 class="project-title">다담리테일 CRM 개인화 마케팅</h3>
+                    <p class="project-desc">채널톡, 애피어 등 마테크 툴을 도입하여 맞춤형 캠페인을 설계하고 퍼포먼스 광고를 최적화했습니다.</p>
+                </div>
+            </a>
+
+            <!-- 프로젝트 카드 3 -->
+            <a href="yumac.html" class="project-card">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <span class="project-tag">CONTENTS & PR</span>
+                    <span class="project-company">유맥에프앤알</span>
+                    <h3 class="project-title">메가박스 온·오프라인 캠페인 기획</h3>
+                    <p class="project-desc">유튜브 및 IG 영상 광고를 기획하고, 인플루언서 및 광주FC 등과의 오프라인 협업 마케팅을 진행했습니다.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- 스크롤 감지 애니메이션 스크립트 -->
     <script>
-        // 화면에 요소가 나타나는지 감지하는 관찰자(Observer) 생성
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // 카드가 화면에 보이기 시작하면
                 if (entry.isIntersecting) {
-                    // 'show' 클래스를 추가해서 애니메이션 실행!
                     entry.target.classList.add('show');
                 }
             });
-        }, {
-            threshold: 0.1 // 카드가 화면에 10%만 보여도 애니메이션 시작
-        });
+        }, { threshold: 0.1 });
 
-        // 모든 카드 요소를 찾아서 관찰 시작 및 딜레이 설정
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, index) => {
-            // 0.2초 간격으로 카드들이 순서대로 떠오르도록 시간차를 줍니다.
-            card.style.animationDelay = `${index * 0.2}s`;
-            observer.observe(card); // 각각의 카드를 감시하라고 지시
+        // 모든 카드(가로형, 세로형)에 애니메이션 딜레이 순차 적용
+        document.querySelectorAll('.card, .project-card').forEach((el, index) => {
+            // 한 줄에 있는 카드들이 0.2초 간격으로 스르륵 뜨도록 설정
+            el.style.animationDelay = `${(index % 3) * 0.2}s`; 
+            observer.observe(el);
         });
     </script>
 </body>
