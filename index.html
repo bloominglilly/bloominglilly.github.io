@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Marketer | Kang JiHee</title>
-    <!-- 아이콘을 쓰기 위한 폰트어썸 라이브러리 추가 -->
+    <!-- 화살표 아이콘을 위한 폰트어썸 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -19,166 +19,54 @@
         .section-container { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 1.5rem; margin-bottom: 50px; letter-spacing: 3px; color: #fff; font-weight: 500; }
 
-        /* 새로워진 Work Experience 카드 디자인 */
+        /* 시크하고 모던한 미니멀 타이포 카드 디자인 */
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
         
         .card { 
-            background: #1a1a1a; 
+            background: transparent; /* 배경을 투명하게 해서 더 시크하게 */
             border: 1px solid #333; 
-            border-radius: 16px; 
-            padding: 40px; 
+            border-radius: 12px; 
+            padding: 50px 40px; 
             text-decoration: none; 
             color: #fff; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
-            min-height: 140px; 
+            min-height: 120px; 
             transition: all 0.4s ease; 
             opacity: 0; 
             transform: translateY(40px);
             position: relative;
-            overflow: hidden;
         }
 
-        /* 산업군 아이콘 스타일 */
-        .card i.industry-icon {
-            font-size: 2.2rem;
+        /* 카드 우측 상단 화살표 */
+        .card .arrow-icon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 1.5rem;
             color: #444;
-            margin-bottom: 25px;
             transition: all 0.4s ease;
         }
 
-        .card h3 { font-size: 1.6rem; margin: 0 0 10px 0; font-weight: 700; z-index: 2; }
-        .card p { font-size: 1.05rem; color: #aaa; margin: 0; line-height: 1.5; z-index: 2; }
+        .card h3 { font-size: 1.8rem; margin: 0 0 12px 0; font-weight: 600; letter-spacing: -0.5px; }
+        .card p { font-size: 1.05rem; color: #777; margin: 0; line-height: 1.5; font-weight: 300; }
 
-        /* 마우스 호버 시 공통 효과 (살짝 떠오름) */
-        .card:hover { transform: translateY(-10px) !important; border-color: #555; }
-
-        /* 1. 서울시니어스타워 호버 효과 (고급스러운 골드/베이지빛 글로우) */
-        .card.hotel:hover { box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
-        .card.hotel:hover i { color: #d4af37; transform: scale(1.1); }
-
-        /* 2. 유맥 호버 효과 (다이나믹한 블루/퍼플 글로우) */
-        .card.retail:hover { box-shadow: 0 15px 35px rgba(88, 101, 242, 0.15); border-color: rgba(88, 101, 242, 0.4); }
-        .card.retail:hover i { color: #5865F2; transform: scale(1.1); }
-
-        /* 3. 센터원플래닛 호버 효과 (신뢰감을 주는 메디컬 그린/민트 글로우) */
-        .card.medical:hover { box-shadow: 0 15px 35px rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); }
-        .card.medical:hover i { color: #2ecc71; transform: scale(1.1); }
-
-        /* 4. 바로만든 호버 효과 (디저트 느낌의 달콤한 코랄 핑크 글로우) */
-        .card.food:hover { box-shadow: 0 15px 35px rgba(255, 107, 107, 0.15); border-color: rgba(255, 107, 107, 0.4); }
-        .card.food:hover i { color: #ff6b6b; transform: scale(1.1); }
+        /* 마우스 호버 시 효과: 테두리가 밝아지고 화살표가 우측 상단으로 뻗어감 */
+        .card:hover { 
+            border-color: #fff; 
+            background: #161616;
+            transform: translateY(-5px) !important;
+        }
+        .card:hover .arrow-icon {
+            color: #fff;
+            transform: translate(5px, -5px); /* 대각선 위로 이동 */
+        }
+        .card:hover h3 { color: #fff; }
+        .card:hover p { color: #ccc; }
 
 
         /* 프로젝트 하이라이트 유지 */
         .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .project-card { background: #1e1e1e; border: 1px solid #333; border-radius: 16px; overflow: hidden; text-decoration: none; color: #fff; display: flex; flex-direction: column; transition: all 0.4s ease; opacity: 0; transform: translateY(40px); }
-        .project-card:hover { transform: translateY(-10px) !important; border-color: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .project-img { width: 100%; height: 220px; background-color: #2a2a2a; background-size: cover; background-position: center; border-bottom: 1px solid #333; }
-        .project-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-tag { align-self: flex-start; background: rgba(255, 255, 255, 0.1); color: #ddd; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; }
-        .project-company { font-size: 0.85rem; color: #888; margin-bottom: 8px; }
-        .project-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 15px 0; line-height: 1.4; }
-        .project-desc { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin: 0; }
-
-        @media (max-width: 768px) { .card-grid, .project-grid { grid-template-columns: 1fr; } }
-        
-        .show { animation: popUp 0.8s forwards ease-out; }
-        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-        @keyframes popUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
-    </style>
-</head>
-<body>
-
-    <div class="hero-section">
-        <div class="hero-text">
-            <h1>Kang JiHee</h1>
-            <p>BRAND MARKETER</p>
-        </div>
-    </div>
-
-    <!-- WORK EXPERIENCE 섹션 (아이콘 + 글로우 효과 적용) -->
-    <div class="section-container">
-        <h2 class="section-title">WORK EXPERIENCE</h2>
-        <div class="card-grid">
-            
-            <a href="seoul-senior.html" class="card hotel">
-                <i class="fa-solid fa-hotel industry-icon"></i>
-                <h3>서울시니어스타워</h3>
-                <p>웰파크호텔, 석정온천휴스파</p>
-            </a>
-
-            <a href="yumac.html" class="card retail">
-                <i class="fa-solid fa-store industry-icon"></i>
-                <h3>유맥에프앤알</h3>
-                <p>다담몰, 메가박스, 유맥</p>
-            </a>
-
-            <a href="centerone.html" class="card medical">
-                <i class="fa-solid fa-leaf industry-icon"></i>
-                <h3>센터원플래닛</h3>
-                <p>청연 메디컬그룹</p>
-            </a>
-
-            <a href="baromake.html" class="card food">
-                <i class="fa-solid fa-cake-candles industry-icon"></i>
-                <h3>바로만든</h3>
-                <p>타르타르, 라라브레드</p>
-            </a>
-
-        </div>
-    </div>
-
-    <!-- PROJECT HIGHLIGHTS 섹션 -->
-    <div class="section-container" style="padding-top: 20px;">
-        <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
-        <div class="project-grid">
-            
-            <a href="project-wellpark.html" class="project-card">
-                <div class="project-img" style="background-image: url('DJI_0352 복사.jpg');"></div>
-                <div class="project-info">
-                    <span class="project-tag">PROMOTION</span>
-                    <span class="project-company">서울시니어스타워</span>
-                    <h3 class="project-title">웰파크호텔 1주년 및 시즌 프로모션 총괄</h3>
-                    <p class="project-desc">객실 패키지 연계 및 가정의 달 프로모션을 기획하여 브랜드 인지도와 매출 증대를 이끌었습니다.</p>
-                </div>
-            </a>
-
-            <a href="yumac.html" class="project-card">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <span class="project-tag">CRM & PERFORMANCE</span>
-                    <span class="project-company">유맥에프앤알</span>
-                    <h3 class="project-title">다담리테일 CRM 개인화 마케팅</h3>
-                    <p class="project-desc">채널톡, 애피어 등 마테크 툴을 도입하여 맞춤형 캠페인을 설계하고 퍼포먼스 광고를 최적화했습니다.</p>
-                </div>
-            </a>
-
-            <a href="yumac.html" class="project-card">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <span class="project-tag">CONTENTS & PR</span>
-                    <span class="project-company">유맥에프앤알</span>
-                    <h3 class="project-title">메가박스 온·오프라인 캠페인 기획</h3>
-                    <p class="project-desc">유튜브 및 IG 영상 광고를 기획하고, 인플루언서 및 광주FC 등과의 오프라인 협업 마케팅을 진행했습니다.</p>
-                </div>
-            </a>
-
-        </div>
-    </div>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('show'); }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.card, .project-card').forEach((el, index) => {
-            el.style.animationDelay = `${(index % 3) * 0.2}s`; 
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+        .project-card:hover { transform: translateY(-10px) !important
