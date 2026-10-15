@@ -4,173 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울시니어스타워 | Kang JiHee</title>
-    <!-- SNS 아이콘을 불러오기 위한 폰트어썸 라이브러리 추가 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         
         body, html {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
-            background-color: #111;
-            color: #fff;
+            background-color: #111; color: #fff;
         }
 
         .nav-bar {
-            padding: 20px 40px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-            z-index: 10;
+            padding: 20px 40px; position: absolute;
+            top: 0; left: 0; width: 100%; box-sizing: border-box; z-index: 10;
         }
         .back-btn {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            color: #fff; text-decoration: none; font-size: 1.1rem;
+            opacity: 0.7; transition: opacity 0.3s;
         }
         .back-btn:hover { opacity: 1; }
 
-        /* 배경 이미지 적용 (DJI_0352 복사.jpg) */
         .header-bg {
             height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(17,17,17,1)), url('DJI_0352 복사.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: flex-end;
-            padding-bottom: 50px;
+            display: flex; align-items: flex-end; padding-bottom: 50px;
         }
 
         .header-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 0 20px;
+            max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px;
         }
 
         .period { color: #aaa; font-size: 1rem; margin-bottom: 10px; display: block; }
         .company-name { font-size: 3rem; font-weight: 700; margin: 0 0 10px 0; }
         .role { font-size: 1.2rem; color: #fff; font-weight: 300; margin-bottom: 30px;}
         
-        /* 링크 버튼 & SNS 아이콘 정렬 */
-        .action-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* 홈페이지 버튼 스타일 */
+        .action-group { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .link-btn {
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            padding: 12px 24px; background: rgba(255, 255, 255, 0.1); color: #fff;
+            text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px; font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease;
         }
-        .link-btn:hover { 
-            background: #fff;
-            color: #111; 
-        }
+        .link-btn:hover { background: #fff; color: #111; }
 
-        /* SNS 아이콘 스타일 */
         .sns-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            margin-left: 5px;
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1);
+            color: #fff; text-decoration: none; font-size: 1.2rem; transition: all 0.3s ease; margin-left: 5px;
         }
-        
-        /* 각 SNS별 마우스 호버 시 브랜드 컬러 적용 */
         .sns-icon.insta:hover { background: #E1306C; color: #fff; }
         .sns-icon.threads:hover { background: #fff; color: #000; }
         .sns-icon.kakao:hover { background: #FEE500; color: #3b1e1e; }
 
-        .content-section {
-            max-width: 1000px;
-            margin: 60px auto 100px;
-            padding: 0 20px;
-        }
+        .content-section { max-width: 1000px; margin: 60px auto 100px; padding: 0 20px; }
 
         .one-liner {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            font-weight: 500;
-            margin-bottom: 60px;
-            color: #ddd;
-            border-left: 4px solid #fff;
-            padding-left: 20px;
+            font-size: 1.5rem; line-height: 1.6; font-weight: 500; margin-bottom: 60px;
+            color: #ddd; border-left: 4px solid #fff; padding-left: 20px;
         }
 
         .achievement-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px;
         }
-
-        @media (max-width: 768px) {
-            .achievement-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .achievement-grid { grid-template-columns: 1fr; } }
 
         .achieve-box {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #333;
+            background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333;
         }
-
-        .achieve-box h3 {
-            color: #fff;
-            margin-top: 0;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-        }
-
-        .achieve-box ul {
-            padding-left: 20px;
-            color: #aaa;
-            line-height: 1.7;
-            margin: 0;
-        }
-
+        .achieve-box h3 { color: #fff; margin-top: 0; font-size: 1.3rem; margin-bottom: 20px; }
+        .achieve-box ul { padding-left: 20px; color: #aaa; line-height: 1.7; margin: 0; }
         .achieve-box li { margin-bottom: 10px; }
 
-        .gallery-section {
-            margin-top: 80px;
+        /* 새로 추가된 하단 프로젝트 카드 섹션 스타일 */
+        .project-section-title { font-size: 1.8rem; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        
+        .project-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;
         }
-        .gallery-title { font-size: 1.5rem; margin-bottom: 20px; }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        @media (max-width: 768px) { .project-grid { grid-template-columns: 1fr; } }
+
+        .project-card {
+            background: #1e1e1e; border: 1px solid #333; border-radius: 16px; overflow: hidden;
+            text-decoration: none; color: #fff; display: flex; flex-direction: column; transition: all 0.4s ease;
         }
-        .gallery-item {
-            width: 100%;
-            height: 250px;
-            background: #222;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #555;
-            font-size: 0.9rem;
+        .project-card:hover { transform: translateY(-10px); border-color: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        .project-img { width: 100%; height: 220px; background-size: cover; background-position: center; border-bottom: 1px solid #333; }
+        .project-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-tag {
+            align-self: flex-start; background: rgba(255, 255, 255, 0.1); color: #ddd;
+            padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px;
         }
+        .project-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 15px 0; line-height: 1.4; }
+        .project-desc { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin: 0; }
     </style>
 </head>
 <body>
@@ -183,18 +109,14 @@
         <div class="header-content">
             <span class="period">2026.02 ~ 현재</span>
             <h1 class="company-name">서울시니어스타워</h1>
-            <!-- 직무 역할 수정 -->
             <div class="role">웰파크호텔 & 석정온천휴스파 마케팅 총괄 (대리)</div>
             
             <div class="action-group">
-                <!-- 홈페이지 버튼 2개 (링크 주소는 임시로 넣었으니, 필요시 href="..." 안의 주소를 수정해주세요) -->
                 <a href="http://www.wellparkhotel.com/" target="_blank" class="link-btn">웰파크호텔 홈페이지</a>
                 <a href="http://www.huespa.com/" target="_blank" class="link-btn">석정온천휴스파 홈페이지</a>
-                
-                <!-- SNS 아이콘 -->
-                <a href="https://www.instagram.com/wellpark_hotel/" target="_blank" class="sns-icon insta" title="인스타그램"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.threads.com/@wellpark_hotel" target="_blank" class="sns-icon threads" title="스레드"><i class="fa-brands fa-threads"></i></a>
-                <a href="https://pf.kakao.com/_xmKxiin" target="_blank" class="sns-icon kakao" title="카카오톡 채널"><i class="fa-solid fa-comment"></i></a>
+                <a href="https://www.instagram.com/wellpark_hotel/" target="_blank" class="sns-icon insta"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.threads.com/@wellpark_hotel" target="_blank" class="sns-icon threads"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://pf.kakao.com/_xmKxiin" target="_blank" class="sns-icon kakao"><i class="fa-solid fa-comment"></i></a>
             </div>
         </div>
     </div>
@@ -214,7 +136,6 @@
                     <li>외부 브랜드와의 객실 패키지 연계 등 B2C 제휴 협업 프로젝트 리드</li>
                 </ul>
             </div>
-
             <div class="achieve-box">
                 <h3>Data-Driven Performance</h3>
                 <ul>
@@ -222,7 +143,6 @@
                     <li>구글 애즈(Google Ads), 네이버 검색 광고 세팅 및 ROAS 최적화 운영</li>
                 </ul>
             </div>
-
             <div class="achieve-box">
                 <h3>Owned Media & PR</h3>
                 <ul>
@@ -233,13 +153,21 @@
             </div>
         </div>
 
-        <div class="gallery-section">
-            <h3 class="gallery-title">Campaign & Visuals</h3>
-            <div class="gallery-grid">
-                <div class="gallery-item">이미지 추가 예정</div>
-                <div class="gallery-item">영상 링크 예정</div>
-                <div class="gallery-item">포스터 추가 예정</div>
-            </div>
+        <!-- 해당 회사에서 진행한 프로젝트 카드 목록 -->
+        <h2 class="project-section-title">Projects & Campaigns</h2>
+        <div class="project-grid">
+            <!-- 클릭하면 project-wellpark.html 로 넘어갑니다 -->
+            <a href="project-wellpark.html" class="project-card">
+                <div class="project-img" style="background-image: url('DJI_0352 복사.jpg');"></div>
+                <div class="project-info">
+                    <span class="project-tag">PROMOTION</span>
+                    <h3 class="project-title">웰파크호텔 1주년 및 시즌 프로모션 총괄</h3>
+                    <p class="project-desc">객실 패키지 연계 및 가정의 달 프로모션을 기획하여 브랜드 인지도와 매출 증대를 이끌었습니다.</p>
+                </div>
+            </a>
+            
+            <!-- 추가 프로젝트 카드가 있다면 여기에 복사해서 넣습니다 -->
+            <!-- <a href="새로운프로젝트.html" class="project-card"> ... </a> -->
         </div>
     </div>
 
